@@ -7,7 +7,7 @@ module ActiveRecord
         def to_s
           map do |sets|
             sets.map(&:to_s).join(', ')
-          end.join('|')
+          end.join(' | ')
         end
       end
 

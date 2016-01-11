@@ -14,6 +14,7 @@ end
 
 class Post < ActiveRecord::Base
   validates :title, uniqueness: { scope: :category }
+  validates :tag, uniqueness: true
 end
 
 class Comment < ActiveRecord::Base
@@ -42,14 +43,17 @@ class CreateAllTables < ActiveRecord::Migration
     create_table(:posts) do |t|
       t.string :title
       t.string :category
+      t.string :tag
     end
     add_index :posts, :title, unique: true
 
     create_table(:comments) do |t|
       t.string :body
       t.string :category
+      t.string :tag
     end
     add_index :comments, [:body, :category], unique: true
+    add_index :comments, :tag, unique: true
 
     create_table(:authors) do |t|
       t.string :name

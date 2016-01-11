@@ -9,11 +9,11 @@ class ActiveRecord::InspectorTest < Minitest::Test
   def test_format
     actual = ActiveRecord::Inspector.format
     assert_equal <<-EXPECTED.strip, actual
-Model_Name Table_Name Not_Covered_By_Index Not_Covered_By_Validation
-      User users      email                
-      Blog blogs                           title
-      Post posts      title, category      title
-   Comment comments   category             body, category
+Model_Name Table_Name Not_Covered_By_Index  Not_Covered_By_Validation
+      User users      email                 
+      Blog blogs                            title
+      Post posts      title, category | tag title
+   Comment comments   category              tag | body, category
     EXPECTED
   end
 end
